@@ -4,11 +4,27 @@ session_start();
 $username = htmlspecialchars(trim($_POST["username"] ?? ''), ENT_QUOTES, 'UTF-8'); # Sanitize input
 $password = htmlspecialchars(trim($_POST["password"] ?? ''), ENT_QUOTES, 'UTF-8'); # Sanitize input
 
-$valid_username = "admin";
-$valid_password = "admin";
+$authenticated = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($username === $valid_username && $password === $valid_password) {
+    // Open the CSV file
+    if (($handle = fopen("users.csv", "r")) !== FALSE) {
+        // Skip the header
+        fgetcsv($handle);
+        // Check each row
+        while (($data = fgetcsv($handle)) !== FALSE) {
+            if (count($data) >= 2) {
+                $csv_username = trim($data[0]);
+                $csv_password = trim($data[1]);
+                if ($username === $csv_username && $password === $csv_password) {
+                    $authenticated = true;
+                    break;
+                }
+            }
+        }
+        fclose($handle);
+    }
+    if ($authenticated) {
         $_SESSION["username"] = $username;
         // Redirect to protected page
         header("Location: index.php");

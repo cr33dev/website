@@ -6,9 +6,11 @@
     <meta charset="UTF-8">
     <title>MrGreedyBuys</title>
     <link rel="stylesheet" href="css/index.css">
+    <script src="css/auto-refresh.js"></script>
 </head>
 
 <body>
+<div class="page-container">
 <header>
     <h1>
         Sell At MrGreedyBuys
@@ -16,8 +18,6 @@
     <div class="link-line">
     </div>
 </header>
-
-
 
 <form action="login.php" method="post">
     <h1>
@@ -33,11 +33,24 @@
     </div>
     <button type="submit">Log In</button>
 </form>
-
-
+<form action="register.php" method="post">
+    <h1>
+        Register a new account
+    </h1>
+    <div class="form-box-item">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+    </div>
+    <div class="form-box-item">
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+    </div>
+    <button type="submit">Register</button>
+</form>
 
 <footer>
     &copy;Cr33dev 2025. All rights reserved
 </footer>
+</div>
 </body>
 </html>
