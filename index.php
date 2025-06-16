@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) { // checks if there is a username for the se
     exit(); //exits php
 } //ends the if
 $username = $_SESSION['username']; // makes a variable that stores the username
-?> //ends the php section (so that i can put html)
+?> <!--ends the php section (so that i can put html)-->
 
 <!DOCTYPE html>
 
@@ -27,6 +27,11 @@ $username = $_SESSION['username']; // makes a variable that stores the username
     </div>
 </header>
 <body>
+    <div class="page-container">
     <h1>Welcome to MrGreedyBuys, <?php echo htmlspecialchars($username); ?>!</h1> <!-- php echo outputs the username without any special characters -->
+    </div>
+  <footer>
+    &copy;Cr33dev 2025. All rights reserved
+  </footer>
 </body>
 </html>

@@ -2,21 +2,23 @@
 - colors -
 =====*/
 :root {
-    --main-background1: #ffffff;
-    --main-background2: #000000;
-    --headers1: #df2e6f;
-    --headers2: #c55a80;
-    --headers-border: #1e1e2f;
-    --text-block-border: #f582ae;
-    --text-block-background: #fff2eb;
-    --text-block-text-color: #2f2f4f;
-    --text-primary: #000000;
-    --text-secondary: #ff8906;
-    --text-tersury: #7d4f9e;
-    --links-line-text: #621671;
-    --links-line-text-hover: #1619bf;
-    --form-text: #f582ae;
-    --form-border: #000000;
+    --main-background1: #181a20;
+    --main-background2: #232946;
+    --main-background3: #0becdc;
+    --headers1: #5f6fff;
+    --headers2: #8be9fd;
+    --headers-border: #22223b;
+    --text-block-border: #8be9fd;
+    --text-block-background: #f8fafc;
+    --text-block-text-color: #232946;
+    --text-primary: #f8fafc;
+    --text-secondary: #ffb86c;
+    --text-tersury: #bd93f9;
+    --links-line-text: #5f6fff;
+    --links-line-text-hover: #ff79c6;
+    --form-text: #232946;
+    --form-border: #ffb86c;
+    --form-background: #f8fafc;
 }
 /*=====
 - reset shit -
@@ -33,9 +35,7 @@
 html, body {
     height: 100%;
     min-height: 100vh;
-}
-body {
-    background: linear-gradient(0deg, var(--main-background2), var(--main-background1));
+    background: linear-gradient(90deg, var(--headers1), var(--headers2), var(--headers1));
 }
 h1 {
     color: var(--text-primary);
@@ -91,9 +91,9 @@ p {
     padding-bottom: 1rem;
 }
 footer {
-    margin-top: auto;
     background: linear-gradient(90deg, var(--headers1), var(--headers2), var(--headers1));
     text-align: center;
+    padding: 1rem 0;
 }
 .link-line {
     display: inline-flex;
@@ -110,14 +110,17 @@ footer {
 }
 form {
     margin: 2rem 5rem;
-    border: 0.1rem var(--form-border) solid;
+    border: 0.2rem var(--form-border) solid;
+    border-radius: 1rem;
     align-content: center;
+    background-color: var(--form-background);
     h1 {
         text-align: center;
     }
     display: flex;
     flex-direction: column;
     align-self: center;
+    padding: 3rem 10rem;
 }
 .form-box-item {
     display: inline-flex;
@@ -134,10 +137,28 @@ button {
     margin: 1rem 0.5rem;
     width: auto;
     display: block;
+    border: 0.1rem var(--form-border) solid;
+    border-radius: 1rem;
 }
 .page-container {
-    min-height: 100vh;
+    background: linear-gradient(0deg, var(--main-background2),var(--main-background3), var(--main-background1));
     display: flex;
     flex-direction: column;
     height: auto;
+}
+.text-block, .text-block * {
+    color: var(--text-block-text-color);
+}
+form, form * {
+    color: var(--form-text);
+}
+input {
+    padding: 0.5rem 1rem;
+    border: 0.1rem var(--form-border) solid;
+    background-color: var(--form-background);
+    color: var(--form-text);
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-left: 1rem;
 }

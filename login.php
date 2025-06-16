@@ -1,32 +1,21 @@
 <?php
 session_start();
 
-$username = htmlspecialchars(trim($_POST["username"] ?? ''), ENT_QUOTES, 'UTF-8'); # Sanitize input
-$password = htmlspecialchars(trim($_POST["password"] ?? ''), ENT_QUOTES, 'UTF-8'); # Sanitize input
+$mysqli = new mysqli("localhost", "root", "", "mrgreedybuys");
+if ($mysqli->connect_errno) {
+    die("Failed to connect to MySQL: " . $mysqli->connect_error);
+}
 
-$authenticated = false;
+$username = trim($_POST["username"] ?? '');
+$password = trim($_POST["password"] ?? '');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Open the CSV file
-    if (($handle = fopen("users.csv", "r")) !== FALSE) {
-        // Skip the header
-        fgetcsv($handle);
-        // Check each row
-        while (($data = fgetcsv($handle)) !== FALSE) {
-            if (count($data) >= 2) {
-                $csv_username = trim($data[0]);
-                $csv_password = trim($data[1]);
-                if ($username === $csv_username && $password === $csv_password) {
-                    $authenticated = true;
-                    break;
-                }
-            }
-        }
-        fclose($handle);
-    }
-    if ($authenticated) {
+    $stmt = $mysqli->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result && $result->num_rows === 1) {
         $_SESSION["username"] = $username;
-        // Redirect to protected page
         header("Location: index.php");
         exit();
     } else {
@@ -34,9 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Invalid username or password.</p>";
         echo "<p><a href='index.html'>Try Again</a></p>";
     }
+    $stmt->close();
 } else {
     echo "<h1>Access Denied</h1>";
     echo "<p>Please submit the form properly.</p>";
     echo "<p><a href='index.html'>Go to Login Page</a></p>";
 }
+$mysqli->close();
 ?>

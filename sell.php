@@ -7,8 +7,7 @@ if (!isset($_SESSION['username'])) { // checks if there is a username for the se
 } //closes if
 
 $username = $_SESSION['username']; // makes a variable that stores the username
-?> //closes the php section (so that i can put html)
-
+?><!--closes the php section (so that i can put html)-->
 <!DOCTYPE html>
 
 <html lang="en">
