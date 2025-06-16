@@ -1,0 +1,126 @@
+/*=====
+- colors -
+=====*/
+:root {
+    --main-background1: #000000;
+    --main-background2: #605d5d;
+    --headers1: #df2e6f;
+    --headers2: #c55a80;
+    --headers-border: #1e1e2f;
+    --text-block-border: #f582ae;
+    --text-block-background: #fff2eb;
+    --text-block-text-color: #2f2f4f;
+    --text-primary: #000000;
+    --text-secondary: #ff8906;
+    --text-tersury: #7d4f9e;
+    --links-line-text: #621671;
+    --links-line-text-hover: #1619bf;
+    --form-text: #f582ae;
+    --form-border: #000000;
+}
+/*=====
+- reset shit -
+=====*/
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    text-decoration: none;
+}
+/*=====
+- Page itself -
+=====*/
+body {
+    background: linear-gradient(0deg, var(--main-background1), var(--main-background2), var(--main-background1));
+}
+h1 {
+    color: var(--text-primary);
+}
+h2 {
+    color: var(--text-secondary);
+}
+h3 {
+    color: var(--text-tersury);
+}
+header {
+    background: linear-gradient(90deg, var(--headers1), var(--headers2), var(--headers1));
+    border-bottom: 0.2rem var(--headers-border) solid;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    position:sticky;
+    top:0;
+}
+header h1 {
+    font-size: 3rem;
+    padding:0;
+}
+header h2{
+    font-size: 2rem;
+}
+h1 {
+    font-size: 2.5rem;
+    padding-top: 2rem;
+    padding-left: 0.5rem;
+}
+h2 {
+    font-size: 2rem;
+    padding: 0.4rem 2rem;
+}
+.text-block {
+    background-color: var(--text-block-background);
+    color: var(--text-secondary);
+    border: 0.1rem var(--text-block-border) solid;
+    border-radius:  0.625rem;
+    padding: 1rem 1rem;
+    margin: 1rem 2rem;
+}
+.text-block p {
+    padding: 0.1rem 1rem;
+    color: var(--text-block-text-color);
+}
+p {
+    color: var(--text-tersury);
+    font-size: 1.2rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+footer {
+    background: linear-gradient(90deg, var(--headers1), var(--headers2), var(--headers1));
+    text-align: center;
+}
+.link-line {
+    display: inline-flex;
+    flex-direction: row;
+    align-content: center;
+    gap: 1rem;
+}
+.link-line a {
+    font-size: 2rem;
+    color: var(--links-line-text);
+}
+.link-line a:hover {
+    color: var(--links-line-text-hover);
+}
+form {
+    padding-left: 2rem;
+    margin: 2rem 5rem;
+    border: 0.1rem var(--form-border) solid;
+    h1 {
+        text-align: center;
+    }
+}
+.form-box-item {
+
+}
+label {
+    font-size: 2rem;
+}
+input {
+
+}
+input text {
+    color: var(--form-text);
+}
