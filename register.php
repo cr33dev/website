@@ -1,10 +1,10 @@
-<?php
-session_start();
+<?php // starts the php section
+session_start(); // starts the session of php (so php can do its thing)
 
-$mysqli = new mysqli("localhost", "root", "", "mrgreedybuys");
-if ($mysqli->connect_errno) {
-    die("Failed to connect to MySQL: " . $mysqli->connect_error);
-}
+$mysqli = new mysqli("localhost", "root", "", "mrgreedybuys"); // conects to the sql server using localhost root user and no password and the database name.
+if ($mysqli->connect_errno) { // if there is a connection error then:
+    die("Failed to connect to MySQL: " . $mysqli->connect_error); // kills connection to sql and prints error
+} //ends if
 
 $username = trim($_POST["username"] ?? '');
 $password = trim($_POST["password"] ?? '');
