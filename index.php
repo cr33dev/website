@@ -4,9 +4,9 @@ session_start(); //starts the session of php (so php can do its thing)
 if (!isset($_SESSION['username'])) { // checks if there is a username for the session
     header('Location: index.html');  // if not, redirects the user to the home page (to login if they want)
     exit(); //exits php
-} //ends the if
+} //ends if
 $username = $_SESSION['username']; // makes a variable that stores the username
-?> <!--ends the php section (so that i can put html)-->
+?> <!--ends the php section (so that I can put html)-->
 
 <!DOCTYPE html>
 

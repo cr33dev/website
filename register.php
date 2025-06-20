@@ -1,7 +1,7 @@
 <?php // starts the php section
 session_start(); // starts the session of php (so php can do its thing)
 
-$mysqli = new mysqli("localhost", "root", "", "mrgreedybuys"); // conects to the sql server using localhost root user and no password and the database name.
+$mysqli = new mysqli("localhost", "root", "", "mrgreedybuys"); // connects to the sql server using localhost root user and no password and the database name.
 if ($mysqli->connect_errno) { // if there is a connection error then:
     die("Failed to connect to MySQL: " . $mysqli->connect_error); // kills connection to sql and prints error
 } //ends if
@@ -26,11 +26,13 @@ if (!empty($username) && !empty($password)) {
     }
     $stmt->close();
 
+    // Hash the password before storing
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $mysqli->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
     if (!$stmt) {
         die("Prepare failed: " . $mysqli->error);
     }
-    $stmt->bind_param("sss", $username, $password, $email);
+    $stmt->bind_param("sss", $username, $hashed_password, $email);
     $stmt->execute();
     $stmt->close();
 
@@ -40,7 +42,6 @@ if (!empty($username) && !empty($password)) {
 } else {
     echo "<h1>Registration Failed</h1>";
     echo "<p>Username and password are required.</p>";
-    echo "<p><a href='register.html'>Try Again</a></p>";
+    echo "<p><a href='login.html'>Try Again</a></p>";
 }
 $mysqli->close();
-?>
